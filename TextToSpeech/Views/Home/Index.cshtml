@@ -1,0 +1,24 @@
+
+@model TextToSpeech.Models.Post
+
+@using (Html.BeginForm("Index", "Home"))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Text, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.Text,18,40, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+
+                <input type="submit" value="Enter">
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
