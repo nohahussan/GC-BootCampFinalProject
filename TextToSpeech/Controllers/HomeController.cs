@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VoiceRSS_SDK;
-
 using System.ComponentModel;
 
 namespace TextToSpeech.Controllers
@@ -18,16 +17,14 @@ namespace TextToSpeech.Controllers
 
         public ActionResult Index()
         {
-
             return View();
-
         }
         public ActionResult MyAudio()
         {
             var file = Server.MapPath("~/voice.mp3");
-            return File(file, "audio/mp3");
-            
+            return File(file, "audio/mp3");            
         }
+
         [HttpPost]
         public ActionResult Index(Post obj)
         {
@@ -40,9 +37,7 @@ namespace TextToSpeech.Controllers
 
         public ActionResult About()
         {
-       
             return View();
-
         }
 
         public ActionResult Contact()

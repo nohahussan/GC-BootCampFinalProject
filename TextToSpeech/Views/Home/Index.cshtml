@@ -1,24 +1,11 @@
 
-@model TextToSpeech.Models.Post
 
-@using (Html.BeginForm("Index", "Home"))
-{
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
+<h1>Welcome! This a Text to Speech Application!</h1>
+<br />
+<p>Please enter any text you would like and have it converted to an audio file. <br />When the desired text has been entered press the enter button on the screen, this will allow you to listen to the text that was entered in to the text box.</p>
+<br />
 
-                @Html.LabelFor(m => m.Text, new { @class = "control-label" })
-                @Html.TextAreaFor(m => m.Text,18,40, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-
-                <input type="submit" value="Enter">
-            </div>
-        </div>
-    </div>
-
-}
-
-
-
-
+<input style="background-color: blue" type="button" value="English" class="btn-sm" />
+<input style="background-color: white" type="button" value="French" class="btn-sm" />
+<input style="background-color: red" type="button" value="German" class="btn-sm" />
 

@@ -1,12 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
 using VoiceRSS_SDK;
 
 namespace TextToSpeech.Models
@@ -32,8 +30,6 @@ namespace TextToSpeech.Models
             var voice = voiceProvider.Speech<byte[]>(voiceParams);
             var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "voice.mp3");
             File.WriteAllBytes(fileName, voice);
-
         }
-       
     }
 }
