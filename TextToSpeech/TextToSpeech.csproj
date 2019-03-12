@@ -152,10 +152,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\0025_Washington-DC_5730767_Full.jpg" />
+    <Content Include="images\eiffel-tower-2000717_1920.jpg" />
     <Content Include="images\France.jfif" />
     <Content Include="images\francePicture.jpg" />
     <Content Include="images\german.jpg" />
+    <Content Include="images\programas-de-ingles-en-usa-estados-unidos.jpg" />
     <Content Include="images\united-states-statue-of-liberty.ngsversion.1396531811421.jpg" />
+    <Content Include="images\Untitled-design-2-4-796x417.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -182,8 +186,10 @@
     <Content Include="Views\Home\French.cshtml" />
     <Content Include="Views\Home\English.cshtml" />
     <Content Include="Views\Home\German.cshtml" />
+    <Content Include="Views\Home\Mexico.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
