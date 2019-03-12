@@ -1,5 +1,6 @@
 ﻿
 @model TextToSpeech.Models.Post
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,11 @@
             <div class="col-md-6">
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-
-                    <input type="submit" value="Enter">
+                    <br />
+                    <input type="submit" value="Enter" class="btn-lg">
                 </div>
             </div>
         </div>
