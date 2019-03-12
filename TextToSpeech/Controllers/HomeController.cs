@@ -19,12 +19,12 @@ namespace TextToSpeech.Controllers
         {
             return View();
         }
-        public ActionResult Mexico()
+        public ActionResult Spanish()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Mexico(Post obj)
+        public ActionResult Spanish(Post obj)
         {
             if (ModelState.IsValid)
             {

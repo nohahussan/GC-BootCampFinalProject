@@ -135,14 +135,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AudiosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Audio.cs" />
     <Compile Include="Models\DAL.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextToSpeechContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -187,7 +191,17 @@
     <Content Include="Views\Home\French.cshtml" />
     <Content Include="Views\Home\English.cshtml" />
     <Content Include="Views\Home\German.cshtml" />
-    <Content Include="Views\Home\Mexico.cshtml" />
+    <Content Include="Views\Home\Spanish.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Audios\Create.cshtml" />
+    <Content Include="Views\Audios\Delete.cshtml" />
+    <Content Include="Views\Audios\Details.cshtml" />
+    <Content Include="Views\Audios\Edit.cshtml" />
+    <Content Include="Views\Audios\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
       <SubType>Designer</SubType>
