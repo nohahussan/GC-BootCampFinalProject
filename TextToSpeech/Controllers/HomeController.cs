@@ -22,6 +22,19 @@ namespace TextToSpeech.Controllers
             return View();
 
         }
+        public ActionResult German()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult German(Post obj)
+        {
+            if (ModelState.IsValid)
+            {
+                DAL.GetData(obj.Text, Languages.German);
+            }
+            return RedirectToAction("MyAudio");
+        }
         public ActionResult English()
         {
             return View();
