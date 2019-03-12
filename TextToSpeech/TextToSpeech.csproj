@@ -186,7 +186,7 @@
     <Content Include="Views\Home\French.cshtml" />
     <Content Include="Views\Home\English.cshtml" />
     <Content Include="Views\Home\German.cshtml" />
-    <Content Include="Views\Home\Mexico.cshtml" />
+    <Content Include="Views\Home\Spanish.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
       <SubType>Designer</SubType>
