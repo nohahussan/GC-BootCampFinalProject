@@ -1,11 +1,35 @@
+@Model TextToSpeech.Models.Post
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: url('../../images/GreyHeadphones.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:beige"><b>Welcome! This a Text to Speech Application!</b></h1>
+    <br />
+    <p style="color:beige">Please enter any text you would like and have it converted to an audio file. <br />When the desired text has been entered press the enter button on the screen, this will allow you to listen to the text that was entered in to the text box.</p>
+    <br />
 
-
-<h1>Welcome! This a Text to Speech Application!</h1>
-<br />
-<p>Please enter any text you would like and have it converted to an audio file. <br />When the desired text has been entered press the enter button on the screen, this will allow you to listen to the text that was entered in to the text box.</p>
-<br />
-
-<input style="background-color: blue" type="button" value="English" class="btn-sm" />
-<input style="background-color: white" type="button" value="French" class="btn-sm" />
-<input style="background-color: red" type="button" value="German" class="btn-sm" />
-
+    <form action="/Home/English" class="btn-group-justified">
+        <button type="submit" value="English" class="btn-lg">English</button>
+    </form>
+    <br />
+    <form action="/Home/French" class="btn-group-justified">
+        <button type="submit" value="French" class="btn-lg">French</button>
+    </form>
+    <br />
+    <form action="/Home/German" class="btn-group-justified">
+        <button type="submit" value="German" class="btn-lg">German</button>
+    </form>
+    <br />
+    <form action="/Home/Spanish" class="btn-group-justified">
+        <button type="submit" value="Spanish" class="btn-lg">Spanish</button>
+    </form>
+</body>
+</html>

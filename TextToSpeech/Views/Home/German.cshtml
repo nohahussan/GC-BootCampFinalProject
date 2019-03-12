@@ -1,0 +1,30 @@
+﻿@model TextToSpeech.Models.Post
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: url('../../images/german.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("German", "Home"))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
+                    @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+                    <br />
+                    <input type="submit" value="Enter" class="btn-lg">
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

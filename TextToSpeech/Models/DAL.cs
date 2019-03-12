@@ -11,12 +11,12 @@ namespace TextToSpeech.Models
 {
     public class DAL
     {
-        public static void GetData(string Text)
+        public static void GetData(string Text,string lang)
         {
             var apiKey = "8251658e18e14a7eb81d4366a62ee4bf";
             var isSSL = false;
-            var lang = Languages.English_UnitedStates;
-
+            //var lang = Languages.English_UnitedStates;
+            
             var voiceParams = new VoiceParameters(Text, lang)
             {
                 AudioCodec = AudioCodec.MP3,
