@@ -8,6 +8,8 @@ namespace TextToSpeech.Models
 {
     public class Login
     {
+        [Key]
+        public int ID { get; set; }
         [Required]
         [RegularExpression("^[A-Z]+[A-z]{1,30}$")]
         public string FirstName { set; get; }
@@ -29,8 +31,9 @@ namespace TextToSpeech.Models
             FirstName = "";
             LastName = "";
         }
-        public Login(string firstname, string lastname, string email, string password, string confirmpassword)
+        public Login(int id, string firstname, string lastname, string email, string password, string confirmpassword)
         {
+            ID = id;
             FirstName = firstname;
             LastName = lastname;
             Email = email;
