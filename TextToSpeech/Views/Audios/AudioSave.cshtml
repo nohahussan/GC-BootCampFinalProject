@@ -1,0 +1,20 @@
+﻿
+<h1>Audio List</h1>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th>Language</th>
+        <th></th>
+    </tr>
+    @foreach (var audio in ViewBag.audio)
+    {
+        <tr>            
+            <td>@audio.Title</td>
+            <td>@audio.Text</td>
+            <td>@audio.Language</td>
+        </tr>
+    }
+</table>
+

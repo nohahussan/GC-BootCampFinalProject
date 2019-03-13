@@ -193,7 +193,7 @@
     <Content Include="Views\Home\English.cshtml" />
     <Content Include="Views\Home\German.cshtml" />
     <Content Include="Views\Home\Spanish.cshtml" />
-    <Content Include="Views\Home\AudioSave.cshtml" />
+    <Content Include="Views\Audios\AudioSave.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Audios\Create.cshtml" />
     <Content Include="Views\Audios\Delete.cshtml" />

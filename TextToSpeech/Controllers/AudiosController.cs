@@ -35,27 +35,29 @@ namespace TextToSpeech.Controllers
             return View(audio);
         }
 
-        // GET: Audios/Create
+        // POST: Audios/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Audios/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Text,Language")] Audio audio)
-        {
+        public ActionResult Add()
+        {            
             if (ModelState.IsValid)
             {
-                db.Audios.Add(audio);
+                Post obj = (Post)Session["a"];
+                Audio a = new Audio();
+                a.Title = obj.Title;
+                a.Text = obj.Text;
+                //a.Language = obj.Language;
+                db.Audios.Add(a);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            return View(audio);
+            return RedirectToAction("Index");
         }
 
         // GET: Audios/Edit/5

@@ -31,6 +31,7 @@ namespace TextToSpeech.Controllers
                 DAL.GetData(obj.Text, Languages.Spanish_Mexico);
             }
             // return RedirectToAction("MyAudio");
+            Session["a"] = obj;
             return View();
         }
         public ActionResult German()
@@ -45,14 +46,14 @@ namespace TextToSpeech.Controllers
                 DAL.GetData(obj.Text, Languages.German);
             }
             //return RedirectToAction("MyAudio");
+            Session["a"] = obj;
             return View();
         }
         public ActionResult English()
         {
            // Post obj = new Post();
             
-            return View(obj.Text);
-            
+            return View(obj.Text);            
         }
         [HttpPost]
         public ActionResult English(Post obj)
@@ -61,8 +62,8 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.English_UnitedStates);
             }
+            Session["a"] = obj;       
             return View();
-            // return RedirectToAction("MyAudio");
         }
         public ActionResult French()
         {
@@ -76,14 +77,20 @@ namespace TextToSpeech.Controllers
                 DAL.GetData(obj.Text, Languages.French_France);
             }
             // return RedirectToAction("MyAudio");
+            Session["a"] = obj;
             return View();
         }
 
         public ActionResult MyAudio()
         {
             var file = Server.MapPath("~/voice.mp3");
-            return File(file, "audio/mp3");   
-                      
+            return File(file, "audio/mp3");                      
+        }
+
+        public ActionResult Save()
+        {
+            AudiosController audio = new AudiosController();
+            return View("Create", audio);
         }
 
         public ActionResult Login()
