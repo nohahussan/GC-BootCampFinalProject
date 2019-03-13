@@ -20,21 +20,22 @@
             <div class="col-md-6">
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
 
-                    <button type="submit" value="Enter">Enter</button>
+                    <!-- <button type="submit" value="Enter">Enter</button>-->
                     <!--  <button onclick="audioPlay()" type="submit" value="Enter">Enter</button>-->
                     <!--  <button onclick="audioPlay()" value="Enter">Enter</button>-->
+                    <input type="submit" value="Enter" class="btn-lg">
 
                 </div>
+                </div>
             </div>
-        </div>
-    }
-    <audio controls>
-        <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-    </audio>
+        }
+        <audio controls>
+            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+        </audio>
 
-</body>
-    </html>
+    </body>
+        </html>

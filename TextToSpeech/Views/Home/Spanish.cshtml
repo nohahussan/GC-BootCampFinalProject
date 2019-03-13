@@ -13,17 +13,17 @@
     </style>
 </head>
 <body>
-    @using (Html.BeginForm("Mexico", "Home"))
+    @using (Html.BeginForm("Spanish", "Home"))
     {
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
 
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })
+                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-
-                    <input type="submit" value="Enter">
+                 
+                    <input type="submit" value="Enter" class="btn-lg">
                 </div>
             </div>
         </div>

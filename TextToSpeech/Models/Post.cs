@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +9,9 @@ using System.Web.Mvc;
 namespace TextToSpeech.Models
 {
     public class Post
+
     {
+        [Required]
         public string Text { get; set; }
 
         public Post()
@@ -18,7 +21,5 @@ namespace TextToSpeech.Models
         {
            this.Text = Text;
         }
-
-
     }
 }
