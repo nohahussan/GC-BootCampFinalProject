@@ -78,6 +78,11 @@ namespace TextToSpeech.Controllers
             return File(file, "audio/mp3");            
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Index(Post obj)
         {

@@ -192,16 +192,18 @@
     <Content Include="Views\Home\English.cshtml" />
     <Content Include="Views\Home\German.cshtml" />
     <Content Include="Views\Home\Spanish.cshtml" />
-    <Content Include="Views\Logins\Create.cshtml" />
-    <Content Include="Views\Logins\Delete.cshtml" />
-    <Content Include="Views\Logins\Details.cshtml" />
-    <Content Include="Views\Logins\Edit.cshtml" />
-    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Home\AudioSave.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Audios\Create.cshtml" />
     <Content Include="Views\Audios\Delete.cshtml" />
     <Content Include="Views\Audios\Details.cshtml" />
     <Content Include="Views\Audios\Edit.cshtml" />
     <Content Include="Views\Audios\Index.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
       <SubType>Designer</SubType>
