@@ -16,9 +16,16 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <h4>
+                        S'il vous plaît entrer un titre
+                    </h4>
                     @Html.LabelFor(m => m.Title, new { @class = "control-label" })<br />
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+
+                    <h4>
+                       S'il vous plaît entrez votre texte
+                    </h4>
 
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
@@ -31,7 +38,9 @@
     }
     <audio controls>
         <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-    </audio>
 
+    </audio>
 </body>
 </html>
+
+
