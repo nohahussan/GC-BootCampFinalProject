@@ -9,7 +9,12 @@ using System.Web.Mvc;
 namespace TextToSpeech.Models
 {
     public class Post
-    {        
+
+    {
+        [Required]
+        public string Title { get; set; }
+
+        [Required]
         public string Text { get; set; }
 
         public Post()

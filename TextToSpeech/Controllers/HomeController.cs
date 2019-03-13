@@ -13,15 +13,15 @@ namespace TextToSpeech.Controllers
 {
     public class HomeController : Controller
     {
+        Post obj = new Post();
         Post userChoice = new Post();
-
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult Spanish()
         {
-            return View();
+            return View(obj.Text);
         }
         [HttpPost]
         public ActionResult Spanish(Post obj)
@@ -30,11 +30,12 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.Spanish_Mexico);
             }
-            return RedirectToAction("MyAudio");
+            // return RedirectToAction("MyAudio");
+            return View();
         }
         public ActionResult German()
         {
-            return View();
+            return View(obj.Text);
         }
         [HttpPost]
         public ActionResult German(Post obj)
@@ -43,11 +44,15 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.German);
             }
-            return RedirectToAction("MyAudio");
+            //return RedirectToAction("MyAudio");
+            return View();
         }
         public ActionResult English()
         {
-            return View();
+           // Post obj = new Post();
+            
+            return View(obj.Text);
+            
         }
         [HttpPost]
         public ActionResult English(Post obj)
@@ -56,11 +61,12 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.English_UnitedStates);
             }
-            return RedirectToAction("MyAudio");
+            return View();
+            // return RedirectToAction("MyAudio");
         }
         public ActionResult French()
         {
-            return View();
+            return View(obj.Text);
         }
         [HttpPost]
         public ActionResult French(Post obj)
@@ -69,13 +75,15 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.French_France);
             }
-            return RedirectToAction("MyAudio");
+            // return RedirectToAction("MyAudio");
+            return View();
         }
 
         public ActionResult MyAudio()
         {
             var file = Server.MapPath("~/voice.mp3");
-            return File(file, "audio/mp3");            
+            return File(file, "audio/mp3");   
+                      
         }
 
         public ActionResult Login()
