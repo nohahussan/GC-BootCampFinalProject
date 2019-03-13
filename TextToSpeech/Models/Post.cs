@@ -9,7 +9,6 @@ namespace TextToSpeech.Models
 {
     public class Post
     {
-
         public string Text { get; set; }
 
         public Post()

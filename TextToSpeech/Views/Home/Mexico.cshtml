@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <style>
         body {
             background: url('../../images/Untitled-design-2-4-796x417.png') no-repeat center center fixed;
@@ -25,6 +27,10 @@
                 </div>
             </div>
         </div>
+
     }
+    <audio controls>
+        <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+    </audio>
 </body>
 </html>
