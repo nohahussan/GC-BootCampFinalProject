@@ -11,6 +11,7 @@ namespace TextToSpeech.Models
     public class Post
 
     {
+
         [Required]
         public string Text { get; set; }
 
