@@ -72,9 +72,9 @@ namespace TextToSpeech.Controllers
         {
             return View();
         }
-        
+
         public ActionResult Add()
-        {         
+        {
             if (ModelState.IsValid)
             {
                 Post obj = (Post)Session["a"];
@@ -83,28 +83,30 @@ namespace TextToSpeech.Controllers
                 a.Text = obj.Text;
                 a.Language = obj.Language;
                 Boolean find = false;
-                using (var context = new TextToSpeechContext()) //avoid any duplication in the database
+                using (var context = db) //avoid any duplication in the database
                 {
                     // Load some posts from the database into the context
                     context.Audios.Load();
                     // Get the local collection 
                     var localPosts = context.Audios.Local;
                     // Loop over the posts in the context.
-                    foreach (var post in context.Audios.Local)
+                    foreach (var post in localPosts)
                     {
-                        if ((post.Title == a.Title && post.Text == a.Title))
+                        if (post.Title == a.Title && post.Text == a.Text)
                         {
                             find = true;
+                            break;
                         }
                     }
-                  if(find == false)
-                  {
-                    db.Audios.Add(a);
-                    db.SaveChanges();
-                  }
-            }
+                    if (find == false)
+                    {
+                        db.Audios.Add(a);
+                        db.SaveChanges();
+                    }
+
                 }
-            
+
+            }
             return RedirectToAction("Index");
         }
 
