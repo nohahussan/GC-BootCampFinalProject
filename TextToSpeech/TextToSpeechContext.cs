@@ -17,7 +17,7 @@ public class TextToSpeechContext : DbContext
     {
     }
 
-    public System.Data.Entity.DbSet<TextToSpeech.Models.Login> Logins { get; set; }
-
     public System.Data.Entity.DbSet<TextToSpeech.Models.Audio> Audios { get; set; }
+
+    public System.Data.Entity.DbSet<TextToSpeech.Models.Login> Logins { get; set; }
 }

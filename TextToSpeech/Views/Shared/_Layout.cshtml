@@ -23,6 +23,22 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (ViewBag.CurrentUser != null)
+                    {
+                        <li>@Html.ActionLink("Audio List", "AudioSave", "Home")</li>
+                    }
+                    @if (ViewBag.CurrentUser == null)
+                    {
+                        <li>@Html.ActionLink("Register User", "Create", "Logins")</li>
+                    }
+                    @if (ViewBag.CurrentUser == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    }
+                    @if (ViewBag.CurrentUser != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "LogOut", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

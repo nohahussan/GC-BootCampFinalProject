@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -41,4 +42,9 @@ namespace TextToSpeech.Models
             ConfirmPassword = confirmpassword;
         }
     }
+
+    //public class TextToSpeech : DbContext
+    //{
+    //    public DbSet<Login> Logins { get; set; }
+    //}
 }
