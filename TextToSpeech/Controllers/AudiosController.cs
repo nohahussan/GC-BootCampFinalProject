@@ -17,6 +17,7 @@ namespace TextToSpeech.Controllers
         // GET: Audios
         public ActionResult Index()
         {
+
             return View(db.Audios.ToList());
         }
 
@@ -28,11 +29,38 @@ namespace TextToSpeech.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Audio audio = db.Audios.Find(id);
+
+            string lang = audio.Language;
+
+            switch (lang)
+            {
+                case "English":
+                    DAL.GetData(audio.Text, "en-us");
+                    break;
+                case "French":
+                    DAL.GetData(audio.Text, "fr-fr");
+                    break;
+                case "German":
+                    DAL.GetData(audio.Text, "de-de");
+                    break;
+                case "Spanish":
+                    DAL.GetData(audio.Text, "es-mx");
+                    break;
+                default:
+                    break;
+            }
+            
+           
             if (audio == null)
             {
                 return HttpNotFound();
             }
             return View(audio);
+        }
+        public ActionResult MyAudio()
+        {
+            var file = Server.MapPath("~/voice.mp3");
+            return File(file, "audio/mp3");
         }
 
         // POST: Audios/Create
@@ -44,19 +72,39 @@ namespace TextToSpeech.Controllers
         {
             return View();
         }
-
+        
         public ActionResult Add()
-        {            
+        {         
             if (ModelState.IsValid)
             {
                 Post obj = (Post)Session["a"];
                 Audio a = new Audio();
                 a.Title = obj.Title;
                 a.Text = obj.Text;
-                //a.Language = obj.Language;
-                db.Audios.Add(a);
-                db.SaveChanges();
+                a.Language = obj.Language;
+                Boolean find = false;
+                using (var context = new TextToSpeechContext()) //avoid any duplication in the database
+                {
+                    // Load some posts from the database into the context
+                    context.Audios.Load();
+                    // Get the local collection 
+                    var localPosts = context.Audios.Local;
+                    // Loop over the posts in the context.
+                    foreach (var post in context.Audios.Local)
+                    {
+                        if ((post.Title == a.Title && post.Text == a.Title))
+                        {
+                            find = true;
+                        }
+                    }
+                  if(find == false)
+                  {
+                    db.Audios.Add(a);
+                    db.SaveChanges();
+                  }
             }
+                }
+            
             return RedirectToAction("Index");
         }
 
