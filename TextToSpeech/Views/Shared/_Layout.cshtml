@@ -23,21 +23,21 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (ViewBag.CurrentUser != null)
+                    @if (Session["CurrentUser"] != null)
                     {
-                        <li>@Html.ActionLink("Audio List", "AudioSave", "Home")</li>
+                        <li>@Html.ActionLink("Audio List", "Index", "Audios")</li>
                     }
-                    @if (ViewBag.CurrentUser == null)
+                    @if (Session["CurrentUser"] == null)
                     {
                         <li>@Html.ActionLink("Register User", "Create", "Logins")</li>
                     }
-                    @if (ViewBag.CurrentUser == null)
+                    @if (Session["CurrentUser"] == null)
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Logins")</li>
                     }
-                    @if (ViewBag.CurrentUser != null)
+                    @if (Session["CurrentUser"] != null)
                     {
-                        <li>@Html.ActionLink("Logout", "LogOut", "Home")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Logins")</li>
                     }
                 </ul>
             </div>

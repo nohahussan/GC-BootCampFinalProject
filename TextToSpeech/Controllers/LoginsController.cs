@@ -11,11 +11,11 @@ using TextToSpeech.Models;
 namespace TextToSpeech.Controllers
 {
     public class LoginsController : Controller
-    {
+    {        
         private TextToSpeechContext db = new TextToSpeechContext();
 
-        // GET: Logins
-        public ActionResult Index()
+    // GET: Logins
+    public ActionResult Index()
         {
             return View(db.Logins.ToList());
         }
@@ -35,6 +35,65 @@ namespace TextToSpeech.Controllers
             return View(login);
         }
 
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        public ActionResult ValidLogin(TextToSpeechContext logins)
+        {
+            if (logins == null)
+            {
+                ViewBag.ErrorMessage = "No users available!";
+                return View("Error");
+            }
+            else
+            {                
+                foreach (Login login in db.Logins)
+                {
+                    if (login.Email == login.Email && login.Password == login.Password)
+                    {
+                        Session["CurrentUser"] = login;                        
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+            ViewBag.ErrorMessage = "Your Email address and/or password are not valid!";
+            return View("Error");
+        }
+
+        public ActionResult RegisterUser(Login logins)
+        {            
+            if (Session["CurrentUser"] != null)
+            {
+                logins = (Login)Session["CurrentUser"];
+                ViewBag.CurrentUser = logins;
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.CurrentUser = logins;
+                    Session["CurrentUser"] = logins;                    
+                    db.Logins.Add(logins);
+                    
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Registration Failed. Please try again";
+                    return View("Create");
+                }
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            //ViewBag.RegisteredUsers = (User)Session["RegisteredUsers"];
+            Session.Remove("CurrentUser");
+            return RedirectToAction("Index", "Home");
+        }
         // GET: Logins/Create
         public ActionResult Create()
         {
