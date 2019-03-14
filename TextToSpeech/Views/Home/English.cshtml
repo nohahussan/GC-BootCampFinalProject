@@ -31,17 +31,10 @@
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-                    <br />
-                    <!-- <button type="submit" value="Enter">Enter</button>-->
+                  
                     <div class="col-lg-2">
-                        <button onclick="audioPlay()" type="submit" value="Enter">Enter</button>
+                        <input type="submit" value="Enter" class="btn-lg">
                     </div>
-
-                    <!--  <button onclick="audioPlay()" value="Enter">Enter</button>-->
-                    <!-- <div class="col-lg-2">
-        <input type="submit" value="Enter" class="btn-lg">
-    </div>-->
-
                     <div class="col-lg-2">
                         <button type="button" value="Save" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
                     </div>

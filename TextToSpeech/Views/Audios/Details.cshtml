@@ -33,7 +33,11 @@
         <dd>
             @Html.DisplayFor(model => model.Language)
         </dd>
-
+        <dd>
+            <audio controls>
+                <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+            </audio>
+        </dd>
     </dl>
 </div>
 <p>

@@ -30,7 +30,7 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.Spanish_Mexico);
             }
-            // return RedirectToAction("MyAudio");
+            obj.Language = "Spanish";
             Session["a"] = obj;
             return View();
         }
@@ -45,7 +45,7 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.German);
             }
-            //return RedirectToAction("MyAudio");
+            obj.Language = "German";
             Session["a"] = obj;
             return View();
         }
@@ -62,6 +62,7 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.English_UnitedStates);
             }
+            obj.Language = "English";
             Session["a"] = obj;       
             return View();
         }
@@ -76,7 +77,7 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.French_France);
             }
-            // return RedirectToAction("MyAudio");
+            obj.Language = "French";
             Session["a"] = obj;
             return View();
         }
