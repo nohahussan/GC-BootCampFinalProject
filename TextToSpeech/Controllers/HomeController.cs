@@ -15,10 +15,12 @@ namespace TextToSpeech.Controllers
     {
         Post obj = new Post();
         Post userChoice = new Post();
+
         public ActionResult Index()
         {
             return View();
         }
+        
         public ActionResult Spanish()
         {
             return View(obj.Text);
@@ -99,11 +101,7 @@ namespace TextToSpeech.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(Post obj)
-        {
-            return View();
-        }
+        
 
         public ActionResult About()
         {

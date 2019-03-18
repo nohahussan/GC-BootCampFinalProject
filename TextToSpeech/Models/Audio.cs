@@ -11,9 +11,9 @@ namespace TextToSpeech.Models
     {
         [Key]
         public int ID { get; set; }
-        [Required]
+        
         public string Title { get; set; }
-        [Required]
+        
         public string Text { get; set; }
         public string Language { get; set; }
 
@@ -32,7 +32,7 @@ namespace TextToSpeech.Models
     }
 
     //public class TextToSpeechContext : DbContext
-    //{
-    //    public DbSet<Audio> Audios { get; set; }
-    //}
+   // {
+       // public DbSet<Audio> Audios { get; set; }
+   // }
 }
