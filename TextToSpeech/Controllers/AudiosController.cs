@@ -49,8 +49,8 @@ namespace TextToSpeech.Controllers
                 default:
                     break;
             }
-            
-           
+
+
             if (audio == null)
             {
                 return HttpNotFound();
@@ -79,33 +79,39 @@ namespace TextToSpeech.Controllers
             {
                 Post obj = (Post)Session["a"];
                 Audio a = new Audio();
-                a.Title = obj.Title;
-                a.Text = obj.Text;
-                a.Language = obj.Language;
-                Boolean find = false;
-                using (var context = db) //avoid any duplication in the database
+                try
                 {
-                    // Load some posts from the database into the context
-                    context.Audios.Load();
-                    // Get the local collection 
-                    var localPosts = context.Audios.Local;
-                    // Loop over the posts in the context.
-                    foreach (var post in localPosts)
+                    a.Title = obj.Title;
+                    a.Text = obj.Text;
+                    a.Language = obj.Language;
+                    Boolean find = false;
+                    using (var context = db) //avoid any duplication in the database
                     {
-                        if (post.Title == a.Title && post.Text == a.Text)
+                        // Load some posts from the database into the context
+                        context.Audios.Load();
+                        // Get the local collection 
+                        var localPosts = context.Audios.Local;
+                        // Loop over the posts in the context.
+                        foreach (var post in localPosts)
                         {
-                            find = true;
-                            break;
+                            if (post.Title == a.Title && post.Text == a.Text)
+                            {
+                                find = true;
+                                break;
+                            }
+                        }
+
+                        if (find == false)
+                        {
+                            db.Audios.Add(a);
+                            db.SaveChanges();
                         }
                     }
-                    if (find == false)
-                    {
-                        db.Audios.Add(a);
-                        db.SaveChanges();
-                    }
-
                 }
-
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return RedirectToAction("Index");
         }

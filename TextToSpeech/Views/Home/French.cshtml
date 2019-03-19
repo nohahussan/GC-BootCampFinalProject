@@ -18,21 +18,23 @@
                 <div class="form-group">
                     <h4><font color="#633974"> S'il vous plaît entrer un titre</font></h4>
 
-                   
+
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
                     <h4><font color="#633974"> S'il vous plaît entrez votre texte</font></h4>
-                    
+
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
                     <br />
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <input type="submit" value="Entrer" class="btn-lg">
                     </div>
-
-                    <div class="col-lg-4">
-                        <button type="button" value="Enregistrer" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
+                    <div class="col-lg-3">
+                        <button type="button" value="Enregistrer" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Enregistrer</button>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" value="d'accueil" class="btn-lg" onclick="location.href='@Url.Action("Index")'">d'accueil</button>
                     </div>
                 </div>
             </div>

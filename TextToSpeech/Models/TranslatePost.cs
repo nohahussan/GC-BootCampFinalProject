@@ -8,17 +8,13 @@ namespace translation_API.Models
 {
     public class TranslatePost
     {
-
         public string TranslatedText { get; set; }
-
-
+        
         public TranslatePost()
         {
 
         }
-
-
-
+        
         public TranslatePost(string APIText)
         {
             JObject redditJson = JObject.Parse(APIText);
@@ -26,8 +22,6 @@ namespace translation_API.Models
             JToken post = redditJson["text"];
 
             TranslatedText = post.ToString();
-
-
         }
     }
 }

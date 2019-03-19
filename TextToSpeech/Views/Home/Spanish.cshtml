@@ -33,12 +33,14 @@
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
                     <br />
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <input type="submit" value="Registar" class="btn-lg">
                     </div>
-
-                    <div class="col-lg-4">
-                        <button type="button" value="Salvar" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
+                    <div class="col-lg-3">
+                        <button type="button" value="Salvar" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Salvar</button>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" value="página principal" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Página Principal</button>
                     </div>
                 </div>
             </div>

@@ -26,15 +26,18 @@
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-                    <div class="col-lg-2">
+
+                    <br />
+
+                    <div class="col-lg-3">
                         <input type="submit" value="Daten" class="btn-lg">
                     </div>
 
-                    <div class="col-lg-2">
-                        <button type="button" value="Speichern" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
+                    <div class="col-lg-3">
+                        <button type="button" value="Speichern" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Speichern</button>
                     </div>
-                    <div class="col-lg-2">
-                        <button type="button" value="Save" class="btn-lg" onclick="location.href='@Url.Action("Index")'">"Home"</button>
+                    <div class="col-lg-3">
+                        <button type="button" value="Startseite" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Startseite</button>
                     </div>
                 </div>
             </div>
