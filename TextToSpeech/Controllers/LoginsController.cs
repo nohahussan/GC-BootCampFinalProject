@@ -11,11 +11,11 @@ using TextToSpeech.Models;
 namespace TextToSpeech.Controllers
 {
     public class LoginsController : Controller
-    {        
+    {
         private TextToSpeechContext db = new TextToSpeechContext();
 
-    // GET: Logins
-    public ActionResult Index()
+        // GET: Logins
+        public ActionResult Index()
         {
             return View(db.Logins.ToList());
         }
@@ -40,7 +40,7 @@ namespace TextToSpeech.Controllers
             return View("Login");
         }
 
-        public ActionResult ValidLogin(TextToSpeechContext logins)
+        public ActionResult ValidLogin(Login logins)
         {
             if (logins == null)
             {
@@ -51,7 +51,7 @@ namespace TextToSpeech.Controllers
             {
                 foreach (Login login in db.Logins)
                 {
-                    if (login.Email == login.Email && login.Password == login.Password)
+                    if (login.Email == logins.Email && login.Password == logins.Password)
                     {
                         Session["CurrentUser"] = login;
                         return RedirectToAction("Index", "Home");
@@ -63,19 +63,19 @@ namespace TextToSpeech.Controllers
         }
 
         public ActionResult RegisterUser(Login logins)
-        {            
+        {
             if (Session["CurrentUser"] != null)
             {
-                logins = (Login)Session["CurrentUser"];                
+                logins = (Login)Session["CurrentUser"];
                 return View();
             }
             else
             {
                 if (ModelState.IsValid)
-                {                    
-                    Session["CurrentUser"] = logins;                    
+                {
+                    Session["CurrentUser"] = logins;
                     db.Logins.Add(logins);
-                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -87,10 +87,11 @@ namespace TextToSpeech.Controllers
         }
 
         public ActionResult Logout()
-        {            
+        {
             Session.Remove("CurrentUser");
             return RedirectToAction("Index", "Home");
         }
+
         // GET: Logins/Create
         public ActionResult Create()
         {
