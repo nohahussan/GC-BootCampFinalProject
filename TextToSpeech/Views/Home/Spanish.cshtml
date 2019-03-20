@@ -32,7 +32,9 @@
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+
                     <br />
+
                     <div class="col-lg-3">
                         <input type="submit" value="Registar" class="btn-lg">
                     </div>
@@ -41,17 +43,26 @@
                     </div>
                     <div class="col-lg-3">
                         <button type="button" value="página principal" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Página Principal</button>
+
+                        <div id="play">
+                            <audio controls>
+                                <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+                            </audio>
+                        </div>
+
+                        <h4><font color="33CFFF">Traducir al (Frances, Aleman, Ingles) </font></h4>
+
+                        @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+                        <br />s
+                        <div class="col-lg-2">
+                            <input type="submit" value="Enter" class="btn-lg">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     }
-    <br />
-    <audio controls>
-        <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-    </audio>
 </body>
 </html>
-
 
