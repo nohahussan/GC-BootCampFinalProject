@@ -3,11 +3,52 @@
 <html>
 <head>
     <style>
+        .search_categories {
+            font-size: 13px;
+            padding: 10px;
+            background: #fff;
+            border: 0px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            width: 300px;
+        }
+
+            .search_categories .select {
+                width: 120%;
+                background: url('arrow.png') no-repeat;
+                background-position: 80% center;
+            }
+
+                .search_categories .select select {
+                    background: transparent;
+                    line-height: 1;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    width: 120%;
+                    position: relative;
+                    z-index: 10;
+                    font-size: 1em;
+                }
+
         body {
             background: url('../../images/eiffel-tower-2000717_1920.jpg') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
+            
         }
+        h4 {
+            width: 276px;
+            height: 45px;
+            text-align:center;
+            background-color:aquamarine;
+            font-size: 1em;
+            font-weight: bold;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            border: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -21,7 +62,7 @@
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 
                     <h4><font color="#633974"> S'il vous plaît entrez votre texte</font></h4>
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
+
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
 
@@ -37,16 +78,27 @@
                         </audio>
                     </div>
 
-                    <h4><font color="33CFFF"> Traduire en (Anglais, Allemand, Espagnol) </font></h4>
+                    <h4><font color="#633974"> Traduire en (Anglais, Allemand, Espagnol) </font></h4>
+                    <div>
+                        <div class="search_categories">
+                            <div class="select">
+                                <select name="Lang" id="search_categories">
+                                    
+                                    <option>Francais</option>
+                                    <option>Anglais</option>
+                                    <option>Allemand</option>
+                                    <option>Espagnol</option>
 
-                    @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-                    <div class="col-lg-2">
+                                </select>
+                            </div>
+                        </div>
                         <input type="submit" value="Enter" class="btn-lg">
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
+        
+        
 
     }
    

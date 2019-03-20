@@ -5,10 +5,50 @@
 <html>
 <head>
     <style>
+        .search_categories {
+            font-size: 13px;
+            padding: 10px;
+            background: #fff;
+            border: 0px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            width: 300px;
+        }
+
+            .search_categories .select {
+                width: 120%;
+                background: url('arrow.png') no-repeat;
+                background-position: 80% center;
+            }
+
+                .search_categories .select select {
+                    background: transparent;
+                    line-height: 1;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    width: 120%;
+                    position: relative;
+                    z-index: 10;
+                    font-size: 1em;
+                }
+
         body {
             background: url('../../images/german.jpg') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
+        }
+        h4 {
+            width: 276px;
+            height: 45px;
+            text-align: center;
+            background-color:hotpink;
+            color:darkmagenta;
+            font-size: 1em;
+            font-weight: bold;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -18,11 +58,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <h4><font color="#F9C6EF">Bitte geben Sie einen Titel ein</font></h4>
+                    <h4>Bitte geben Sie einen Titel ein</h4>
                     @Html.LabelFor(m => m.Title, new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-                    <h4><font color="#F9C6EF">Bitte geben Sie Ihren Text ein</font></h4>
+                    <h4>Bitte geben Sie Ihren Text ein</h4>
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
@@ -42,13 +82,22 @@
                         </audio>
                     </div>
 
-                    <h4><font color="33CFFF"> Ubersetzen nach (Franzosisch, Englisch, Spanisch) </font></h4>
-
-                    @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-                    <div class="col-lg-2">
+                    <h4> Ubersetzen nach (Franzosisch, Englisch, Spanisch) </h4>
+                    <div>
+                        <div class="search_categories">
+                            <div class="select">
+                                <select name="Lang" id="search_categories">
+                                    <option>Deutsche</option>
+                                    <option>Englisch</option>
+                                    <option>Franzosisch</option>
+                                    <option>Spanisch</option>
+                               
+                                </select>
+                            </div>
+                        </div>
                         <input type="submit" value="Enter" class="btn-lg">
                     </div>
+                    
                 </div>
         </div>
             </div>

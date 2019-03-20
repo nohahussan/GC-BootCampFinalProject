@@ -14,7 +14,8 @@ namespace TextToSpeech.Controllers
 {
     public class HomeController : Controller
     {
-        Post obj = new Post();
+        
+      Post obj = new Post();
         Post userChoice = new Post();
 
         public ActionResult Index()
@@ -27,14 +28,15 @@ namespace TextToSpeech.Controllers
             return View(obj.Text);
         }
         [HttpPost]
-        public ActionResult Spanish(Post obj)
+        public ActionResult Spanish(Post obj, string Lang)
         {
             if (ModelState.IsValid)
             {
                 DAL.GetData(obj.Text, Languages.Spanish_Mexico);
             }
             Session["a"] = obj;
-            if (obj.Language == null)
+            Session["Language"] = Lang;
+            if (Lang == null || Lang == "Espanol")
             {
                 obj.Language = "Spanish";//this to store the language field to the data base 
                 return View();
@@ -50,14 +52,15 @@ namespace TextToSpeech.Controllers
             return View(obj.Text);
         }
         [HttpPost]
-        public ActionResult German(Post obj)
+        public ActionResult German(Post obj, string Lang)
         {
             if (ModelState.IsValid)
             {
                 DAL.GetData(obj.Text, Languages.German);
             }
             Session["a"] = obj;
-            if (obj.Language == null)
+            Session["Language"] = Lang;
+            if (Lang == null || Lang == "Deutsche")
             {
                 obj.Language = "German";//this to store the language field to the data base 
                 return View();
@@ -75,7 +78,7 @@ namespace TextToSpeech.Controllers
             return View(obj.Text);            
         }
         [HttpPost]
-        public ActionResult English(Post obj)
+        public ActionResult English(Post obj, string Lang)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +86,9 @@ namespace TextToSpeech.Controllers
             }
             
             Session["a"] = obj;
-            if (obj.Language == null)
+            Session["Language"] = Lang;
+
+            if (Lang == null || Lang == "English")
             {
                 obj.Language = "English";//this to store the language field to the data base 
                 return View();
@@ -101,14 +106,15 @@ namespace TextToSpeech.Controllers
             return View(obj.Text);
         }
         [HttpPost]
-        public ActionResult French(Post obj)
+        public ActionResult French(Post obj, string Lang)
         {
             if (ModelState.IsValid)
             {
                 DAL.GetData(obj.Text, Languages.French_France);
             }
             Session["a"] = obj;
-            if (obj.Language == null)
+            Session["Language"] = Lang;
+            if (Lang == null|| Lang == "Francais")
             {
                 obj.Language = "French";//this to store the language field to the data base 
                 return View();
@@ -129,10 +135,11 @@ namespace TextToSpeech.Controllers
         public ActionResult Translation()
         {
             Post var = (Post)Session["a"];
-            string lang = var.Language.Trim(' ').ToLower();
+            string lang = (string)Session["Language"];
 
             switch (lang)
             {
+                
                
                 case "ingles":
                 case "anglais":
@@ -140,19 +147,19 @@ namespace TextToSpeech.Controllers
                     TranslatePost enObj = TranslateDAL.GetPost(var.Text, "en");
                     DAL.GetData(enObj.TranslatedText, Languages.English_UnitedStates);
                     return View(enObj);
-                case "spanish":
+                case "Spanish":
                 case "espagnol":
                 case "spanisch":  
                     TranslatePost spObj = TranslateDAL.GetPost(var.Text, "es");
                     DAL.GetData(spObj.TranslatedText, Languages.Spanish_Mexico);
                     return View(spObj);
-                case "french":
+                case "French":
                 case "frances":
                 case "franzosisch":
                     TranslatePost frObj = TranslateDAL.GetPost(var.Text, "fr");
                     DAL.GetData(frObj.TranslatedText, Languages.French_France);
                     return View(frObj);
-                case "german":
+                case "German":
                 case "aleman":
                 case "allemand":
                     TranslatePost grObj = TranslateDAL.GetPost(var.Text, "de");

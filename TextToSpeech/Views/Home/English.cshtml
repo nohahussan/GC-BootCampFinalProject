@@ -1,16 +1,59 @@
 ﻿
 @model TextToSpeech.Models.Post
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <script src="~/Scripts/app.js"></script>
 
     <style>
-        body {
+        .search_categories {
+            font-size: 13px;
+            padding: 10px;
+            background: #fff;
+            border: 0px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            width: 300px;
             
+        }
+            .search_categories .select {
+                width: 120%;
+                background: url('arrow.png') no-repeat;
+                background-position: 80% center;
+            }
+
+                .search_categories .select select {
+                    background: transparent;
+                    line-height: 1;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    width: 120%;
+                    position: relative;
+                    z-index: 10;
+                    font-size: 1em;
+                }
+
+            
+        body {
             background: url('../../images/0025_Washington-DC_5730767_Full.jpg') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
+        }
+
+        h4 {
+            width: 276px;
+            height: 45px;
+            text-align: center;
+            background-color: aqua;
+            color: blue;
+            font-size: 1em;
+            font-weight: bold;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -20,11 +63,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <h4><font color="33CFFF">Please enter a title</font></h4>
+                    <h4>Please enter a title</h4>
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 
-                    <h4><font color="33CFFF">Please enter your text</font></h4>
+                    <h4>Please enter your text</h4>
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
 
@@ -44,20 +87,29 @@
                         </audio>
                     </div>
 
-                    <h4><font color="33CFFF">Translate to ( French , German, Spanish) </font></h4>
-
-                    @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-                    <div class="col-lg-2">
+                    <h4>Translate to ( French , German, Spanish) </h4>
+                    <div>
+                        <div class="search_categories">
+                            <div class="select">
+                                <select name="Lang" id="search_categories">
+                                  
+                                    <option>English</option>
+                                    <option>French</option>
+                                    <option>Spanish</option>
+                                    <option>German</option>
+                                </select>
+                            </div>
+                        </div>
                         <input type="submit" value="Enter" class="btn-lg">
                     </div>
-
                 </div>
+
             </div>
-        </div>
+            </div>
+            
     }
     <br />
-   
-    
+
+
 </body>
-    </html>
+</html>
