@@ -134,13 +134,7 @@ namespace TextToSpeech.Controllers
             string lang = (string)Session["Language"];
 
             switch (lang)
-<<<<<<< HEAD
             {
-                
-               
-=======
-            {               
->>>>>>> 59b8028fe9cfe9b4f5da9726727632606181d706
                 case "ingles":
                 case "anglais":
                 case "englisch":
