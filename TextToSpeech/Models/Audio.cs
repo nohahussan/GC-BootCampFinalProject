@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,9 @@ namespace TextToSpeech.Models
         public string Text { get; set; }
         public string Language { get; set; }
 
+        [ForeignKey("Login")]
+        public int UserID { get; set; }
+
         public Audio()
         {
 
@@ -29,6 +33,8 @@ namespace TextToSpeech.Models
             Text = text;
             Language = language;
         }
+
+        public virtual Login Login { get; set; }
     }
 
     //public class TextToSpeechContext : DbContext

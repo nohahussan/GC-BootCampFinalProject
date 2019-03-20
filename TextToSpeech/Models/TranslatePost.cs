@@ -10,26 +10,24 @@ namespace TextToSpeech.Models
 {
     public class TranslatePost
     {
-
         public string TranslatedText { get; set; }
-
-
+        
         public TranslatePost()
         {
 
         }
-
-
-
+        
         public TranslatePost(string APIText)
         {
             JObject redditJson = JObject.Parse(APIText);
 
-            List<JToken> post = redditJson["text"].ToList();
+            JToken post = redditJson["text"];
+
+            TranslatedText = post.ToString();
+
+            List<JToken> posts = redditJson["text"].ToList();
             
-            TranslatedText = post[0].ToString();
-
-
+            TranslatedText = posts[0].ToString();
         }
     }
 }

@@ -71,25 +71,23 @@
 
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+
                     <br />
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <input type="submit" value="Registar" class="btn-lg">
                     </div>
-
-                    <div class="col-lg-2">
-                        <button type="button" value="Salvar" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">salvar</button>
+                    <div class="col-lg-3">
+                        <button type="button" value="Salvar" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Salvar</button>
                     </div>
-                    <div class="col-lg-2">
-                        <button type="button" value="Save" class="btn-lg" onclick="location.href='@Url.Action("Index")'">"Casa"</button>
-                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" value="página principal" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Página Principal</button>
 
-                    <div id="play">
-                        <audio controls>
-                            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-                        </audio>
-                    </div>
-
+                        <div id="play">
+                            <audio controls>
+                                <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+                            </audio>
+                        </div>
                     <h4>Traducir al (Frances, Aleman, Ingles)</h4>
 
                     <div>
@@ -105,15 +103,13 @@
                             </div>
                         </div>
                         <input type="submit" value="Enter" class="btn-lg">
+
                     </div>
                 </div>
             </div>
         </div>
-
+            </div>
     }
-    <br />
-    
 </body>
 </html>
-
 
