@@ -27,4 +27,13 @@ namespace TextToSpeech.Models
            this.Text = Text;
         }
     }
+
+    public enum Lang
+    {
+            English,
+            French,
+            Spanish,
+            German
+
+    }
 }

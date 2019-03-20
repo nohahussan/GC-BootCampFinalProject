@@ -5,10 +5,49 @@
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <style>
+        .search_categories {
+            font-size: 13px;
+            padding: 10px;
+            background: #fff;
+            border: 0px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            width: 300px;
+        }
+
+            .search_categories .select {
+                width: 120%;
+                background: url('arrow.png') no-repeat;
+                background-position: 80% center;
+            }
+
+                .search_categories .select select {
+                    background: transparent;
+                    line-height: 1;
+                    border: 0;
+                    padding: 0;
+                    border-radius: 0;
+                    width: 120%;
+                    position: relative;
+                    z-index: 10;
+                    font-size: 1em;
+                }
         body {
             background: url('../../images/Untitled-design-2-4-796x417.png') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
+        }
+        h4 {
+            width: 276px;
+            height: 45px;
+            text-align: center;
+            background-color:antiquewhite;
+            color:brown;
+            font-size: 1em;
+            font-weight: bold;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -21,7 +60,7 @@
                     <h4>
                         Por favor introduzca un título
                     </h4>
-                    @Html.LabelFor(m => m.Title, new { @class = "control-label" })<br />
+
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 
@@ -29,7 +68,7 @@
                         Por favor ingrese su texto
                     </h4>
 
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
+
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
 
@@ -49,19 +88,27 @@
                                 <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
                             </audio>
                         </div>
+                    <h4>Traducir al (Frances, Aleman, Ingles)</h4>
 
-                        <h4><font color="33CFFF">Traducir al (Frances, Aleman, Ingles) </font></h4>
-
-                        @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-                        <br />
-                        <div class="col-lg-2">
-                            <input type="submit" value="Enter" class="btn-lg">
+                    <div>
+                        <div class="search_categories">
+                            <div class="select">
+                                <select name="Lang" id="search_categories">
+                                   
+                                    <option>Espanol</option>
+                                    <option>Ingles</option>
+                                    <option>Frances</option>
+                                    <option>Aleman</option>
+                                </select>
+                            </div>
                         </div>
+                        <input type="submit" value="Enter" class="btn-lg">
+
                     </div>
                 </div>
             </div>
         </div>
+            </div>
     }
 </body>
 </html>
