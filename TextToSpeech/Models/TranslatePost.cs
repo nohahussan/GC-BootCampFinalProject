@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
-namespace translation_API.Models
+namespace TextToSpeech.Models
 {
     public class TranslatePost
     {
@@ -23,9 +25,9 @@ namespace translation_API.Models
         {
             JObject redditJson = JObject.Parse(APIText);
 
-            JToken post = redditJson["text"];
-
-            TranslatedText = post.ToString();
+            List<JToken> post = redditJson["text"].ToList();
+            
+            TranslatedText = post[0].ToString();
 
 
         }

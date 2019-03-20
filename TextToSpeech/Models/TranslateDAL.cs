@@ -6,7 +6,7 @@ using System.Net;
 using System.Web;
 
 
-namespace translation_API.Models
+namespace TextToSpeech.Models
 {
     public class TranslateDAL
     {

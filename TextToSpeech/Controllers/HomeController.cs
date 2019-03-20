@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using VoiceRSS_SDK;
 using System.ComponentModel;
 
+
 namespace TextToSpeech.Controllers
 {
     public class HomeController : Controller
@@ -32,9 +33,17 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.Spanish_Mexico);
             }
-            obj.Language = "Spanish";
             Session["a"] = obj;
-            return View();
+            if (obj.Language == null)
+            {
+                obj.Language = "Spanish";//this to store the language field to the data base 
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Translation");
+            }
         }
         public ActionResult German()
         {
@@ -47,9 +56,17 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.German);
             }
-            obj.Language = "German";
             Session["a"] = obj;
-            return View();
+            if (obj.Language == null)
+            {
+                obj.Language = "German";//this to store the language field to the data base 
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Translation");
+            }
         }
         public ActionResult English()
         {
@@ -64,9 +81,20 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.English_UnitedStates);
             }
-            obj.Language = "English";
-            Session["a"] = obj;       
-            return View();
+            
+            Session["a"] = obj;
+            if (obj.Language == null)
+            {
+                obj.Language = "English";//this to store the language field to the data base 
+                return View();
+
+            }
+            else
+            {
+               
+                return RedirectToAction("Translation");
+            }
+
         }
         public ActionResult French()
         {
@@ -79,11 +107,64 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.French_France);
             }
-            obj.Language = "French";
             Session["a"] = obj;
+            if (obj.Language == null)
+            {
+                obj.Language = "French";//this to store the language field to the data base 
+                return View();
+
+            }
+            
+            else
+            {
+                return RedirectToAction("Translation");
+            }
+        }
+
+        public ActionResult ErrorLanguage()
+        {
             return View();
         }
 
+        public ActionResult Translation()
+        {
+            Post var = (Post)Session["a"];
+            string lang = var.Language.Trim(' ').ToLower();
+
+            switch (lang)
+            {
+               
+                case "ingles":
+                case "anglais":
+                case "englisch":
+                    TranslatePost enObj = TranslateDAL.GetPost(var.Text, "en");
+                    DAL.GetData(enObj.TranslatedText, Languages.English_UnitedStates);
+                    return View(enObj);
+                case "spanish":
+                case "espagnol":
+                case "spanisch":  
+                    TranslatePost spObj = TranslateDAL.GetPost(var.Text, "es");
+                    DAL.GetData(spObj.TranslatedText, Languages.Spanish_Mexico);
+                    return View(spObj);
+                case "french":
+                case "frances":
+                case "franzosisch":
+                    TranslatePost frObj = TranslateDAL.GetPost(var.Text, "fr");
+                    DAL.GetData(frObj.TranslatedText, Languages.French_France);
+                    return View(frObj);
+                case "german":
+                case "aleman":
+                case "allemand":
+                    TranslatePost grObj = TranslateDAL.GetPost(var.Text, "de");
+                    DAL.GetData(grObj.TranslatedText, Languages.German);
+                    return View(grObj);
+                default:
+                    return RedirectToAction("ErrorLanguage");
+             
+            }
+           
+        }
+        
         public ActionResult MyAudio()
         {
             var file = Server.MapPath("~/voice.mp3");
