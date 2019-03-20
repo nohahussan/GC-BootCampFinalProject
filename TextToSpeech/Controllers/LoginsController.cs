@@ -48,12 +48,12 @@ namespace TextToSpeech.Controllers
                 return View("Error");
             }
             else
-            {                
+            {
                 foreach (Login login in db.Logins)
                 {
                     if (login.Email == login.Email && login.Password == login.Password)
                     {
-                        Session["CurrentUser"] = login;                        
+                        Session["CurrentUser"] = login;
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -66,15 +66,13 @@ namespace TextToSpeech.Controllers
         {            
             if (Session["CurrentUser"] != null)
             {
-                logins = (Login)Session["CurrentUser"];
-                ViewBag.CurrentUser = logins;
+                logins = (Login)Session["CurrentUser"];                
                 return View();
             }
             else
             {
                 if (ModelState.IsValid)
-                {
-                    ViewBag.CurrentUser = logins;
+                {                    
                     Session["CurrentUser"] = logins;                    
                     db.Logins.Add(logins);
                     
@@ -89,8 +87,7 @@ namespace TextToSpeech.Controllers
         }
 
         public ActionResult Logout()
-        {
-            //ViewBag.RegisteredUsers = (User)Session["RegisteredUsers"];
+        {            
             Session.Remove("CurrentUser");
             return RedirectToAction("Index", "Home");
         }
@@ -111,7 +108,7 @@ namespace TextToSpeech.Controllers
             {
                 db.Logins.Add(login);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(login);
