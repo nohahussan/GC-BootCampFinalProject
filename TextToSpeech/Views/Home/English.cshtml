@@ -7,7 +7,6 @@
 
     <style>
         body {
-            
             background: url('../../images/0025_Washington-DC_5730767_Full.jpg') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
@@ -21,17 +20,15 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <h4><font color="33CFFF">Please enter a title</font></h4>
-
-                    @Html.LabelFor(m => m.Title, new { @class = "control-label" })
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 
                     <h4><font color="33CFFF">Please enter your text</font></h4>
-
-                    @Html.LabelFor(m => m.Text, new { @class = "control-label" })
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
-                  
+
+                    <br />
+
                     <div class="col-lg-2">
                         <input type="submit" value="Enter" class="btn-lg">
                     </div>
@@ -39,20 +36,27 @@
                         <button type="button" value="Save" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
                     </div>
                     <div class="col-lg-2">
-                        <button type="button" value="Save" class="btn-lg" onclick="location.href='@Url.Action("Index")'">"Home"</button>
+                        <button type="button" value="Home" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Home</button>
+                    </div>
+
+                    <div id="play">
+                        <audio controls>
+                            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+                        </audio>
+                    </div>
+
+                    <h4><font color="33CFFF">Translate to ( French , German, Spanish) </font></h4>
+
+                    @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+                    <br />
+                    <div class="col-lg-2">
+                        <input type="submit" value="Enter" class="btn-lg">
                     </div>
 
                 </div>
-                </div>
             </div>
-        }
-
-
-        <br />
-        <div id="play">
-            <audio controls>
-                <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-            </audio>
         </div>
-    </body>
-    </html>
+    }
+</body>
+</html>

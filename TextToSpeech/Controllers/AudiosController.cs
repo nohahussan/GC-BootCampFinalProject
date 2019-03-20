@@ -17,8 +17,10 @@ namespace TextToSpeech.Controllers
         // GET: Audios
         public ActionResult Index()
         {
-
-            return View(db.Audios.ToList());
+            Login user = new Login();
+            user = (Login)Session["CurrentUser"];
+            var audios = db.Audios.Where(a => a.Login.ID == user.ID);
+            return View(audios.ToList());
         }
 
         // GET: Audios/Details/5
@@ -29,7 +31,6 @@ namespace TextToSpeech.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Audio audio = db.Audios.Find(id);
-
             string lang = audio.Language;
 
             switch (lang)
@@ -49,64 +50,88 @@ namespace TextToSpeech.Controllers
                 default:
                     break;
             }
-            
-           
             if (audio == null)
             {
                 return HttpNotFound();
             }
             return View(audio);
         }
+
         public ActionResult MyAudio()
         {
             var file = Server.MapPath("~/voice.mp3");
             return File(file, "audio/mp3");
         }
 
+        // GET: Audios/Create
+        public ActionResult Create()
+        {
+            ViewBag.UserID = new SelectList(db.Logins, "ID", "FirstName");
+            return View();
+        }
+
         // POST: Audios/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Create()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Title,Text,Language,UserID")] Audio audio)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                db.Audios.Add(audio);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.UserID = new SelectList(db.Logins, "ID", "FirstName", audio.UserID);
+            return View(audio);
         }
 
         public ActionResult Add()
         {
-            if (ModelState.IsValid)
+            try
             {
-                Post obj = (Post)Session["a"];
-                Audio a = new Audio();
-                a.Title = obj.Title;
-                a.Text = obj.Text;
-                a.Language = obj.Language;
-                Boolean find = false;
-                using (var context = db) //avoid any duplication in the database
+                if (ModelState.IsValid)
                 {
-                    // Load some posts from the database into the context
-                    context.Audios.Load();
-                    // Get the local collection 
-                    var localPosts = context.Audios.Local;
-                    // Loop over the posts in the context.
-                    foreach (var post in localPosts)
+                    Post obj = (Post)Session["a"];
+                    Audio a = new Audio();
+                    Login user = (Login)Session["CurrentUser"];
+                    Login l = new Login();
+                    a.Title = obj.Title;
+                    a.Text = obj.Text;
+                    a.Language = obj.Language;
+                    a.UserID = user.ID;
+                    Boolean find = false;
+                    using (var context = db) //avoid any duplication in the database
                     {
-                        if (post.Title == a.Title && post.Text == a.Text)
+                        // Load some posts from the database into the context                    
+                        context.Audios.Load();
+                        // Get the local collection 
+                        var localPosts = context.Audios.Local;
+                        // Loop over the posts in the context.
+                        foreach (var post in localPosts)
                         {
-                            find = true;
-                            break;
+                            if (post.Title == a.Title && post.Text == a.Text)
+                            {
+                                find = true;
+                                break;
+                            }
+                        }
+
+                        if (find == false)
+                        {
+                            db.Audios.Add(a);
+                            db.SaveChanges();
                         }
                     }
-                    if (find == false)
-                    {
-                        db.Audios.Add(a);
-                        db.SaveChanges();
-                    }
-
                 }
-
             }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -122,6 +147,7 @@ namespace TextToSpeech.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserID = new SelectList(db.Logins, "ID", "FirstName", audio.UserID);
             return View(audio);
         }
 
@@ -130,7 +156,7 @@ namespace TextToSpeech.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Text,Language")] Audio audio)
+        public ActionResult Edit([Bind(Include = "ID,Title,Text,Language,UserID")] Audio audio)
         {
             if (ModelState.IsValid)
             {
@@ -138,6 +164,7 @@ namespace TextToSpeech.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserID = new SelectList(db.Logins, "ID", "FirstName", audio.UserID);
             return View(audio);
         }
 

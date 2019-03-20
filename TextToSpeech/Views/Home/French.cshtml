@@ -18,33 +18,43 @@
                 <div class="form-group">
                     <h4><font color="#633974"> S'il vous plaît entrer un titre</font></h4>
 
-                   
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+
                     <h4><font color="#633974"> S'il vous plaît entrez votre texte</font></h4>
-                    
+
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
                     <br />
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <input type="submit" value="Entrer" class="btn-lg">
                     </div>
+                    <div class="col-lg-3">
+                        <button type="button" value="Enregistrer" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Enregistrer</button>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" value="d'accueil" class="btn-lg" onclick="location.href='@Url.Action("Index")'">d'accueil</button>
+                        
+                    </div>
+                    <div id="play">
+                        <audio controls>
+                            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+                        </audio>
+                    </div>
 
-                    <div class="col-lg-4">
-                        <button type="button" value="Enregistrer" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Save</button>
+                    <h4><font color="33CFFF"> Traduire en (Anglais, Allemand, Espagnol) </font></h4>
+
+                    @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+                    <br />
+                    <div class="col-lg-2">
+                        <input type="submit" value="Enter" class="btn-lg">
                     </div>
                 </div>
             </div>
         </div>
 
     }
-    <br />
-    <audio controls>
-        <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
-
-    </audio>
 </body>
 </html>
-
-

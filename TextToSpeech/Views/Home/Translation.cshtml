@@ -1,0 +1,31 @@
+﻿@model TextToSpeech.Models.TranslatePost
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: url('../../images/GreyHeadphones.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                @Html.TextAreaFor(m => m.TranslatedText, 18, 40, new { @class = "form-control" })
+
+            </div>
+        </div>
+    </div>
+
+    <div id="play">
+        <audio controls>
+            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+        </audio>
+    </div>
+</body>
+</html>
