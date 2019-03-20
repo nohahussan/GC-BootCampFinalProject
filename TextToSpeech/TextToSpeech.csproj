@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -141,10 +143,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Audio.cs" />
+    <Compile Include="Models\Audio.cs">
+      <DependentUpon>TextToSpeech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAL.cs" />
-    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>TextToSpeech.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\TextToSpeech.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextToSpeech.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TextToSpeech.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextToSpeech.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TextToSpeech.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextToSpeech.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\TranslateDAL.cs" />
     <Compile Include="Models\TranslatePost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,9 +188,27 @@
     <Content Include="images\programas-de-ingles-en-usa-estados-unidos.jpg" />
     <Content Include="images\united-states-statue-of-liberty.ngsversion.1396531811421.jpg" />
     <Content Include="images\Untitled-design-2-4-796x417.png" />
+    <Content Include="Models\TextToSpeech.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TextToSpeech.edmx</DependentUpon>
+      <LastGenOutput>TextToSpeech.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TextToSpeech.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TextToSpeech.edmx</DependentUpon>
+      <LastGenOutput>TextToSpeech.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\TextToSpeech.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TextToSpeech.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TextToSpeech.edmx.diagram">
+      <DependentUpon>TextToSpeech.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\ClearAudio - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -231,6 +270,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

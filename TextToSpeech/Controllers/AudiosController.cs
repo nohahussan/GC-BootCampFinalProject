@@ -12,14 +12,14 @@ namespace TextToSpeech.Controllers
 {
     public class AudiosController : Controller
     {
-        private TextToSpeechContext db = new TextToSpeechContext();
+        private TextToSpeechEntities db = new TextToSpeechEntities();
 
         // GET: Audios
         public ActionResult Index()
         {
             Login user = new Login();
             user = (Login)Session["CurrentUser"];
-            var audios = db.Audios.Where(a => a.Login.ID == user.ID);
+            var audios = db.Audios.Where(a => a.UserID == user.ID);
             return View(audios.ToList());
         }
 

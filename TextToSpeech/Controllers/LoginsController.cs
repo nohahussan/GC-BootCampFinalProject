@@ -12,7 +12,7 @@ namespace TextToSpeech.Controllers
 {
     public class LoginsController : Controller
     {
-        private TextToSpeechContext db = new TextToSpeechContext();
+        private TextToSpeechEntities db = new TextToSpeechEntities();
 
         // GET: Logins
         public ActionResult Index()
