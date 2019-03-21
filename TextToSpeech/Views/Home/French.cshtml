@@ -13,6 +13,7 @@
             position: relative;
             width: 300px;
         }
+
             .search_categories .select {
                 width: 120%;
                 background: url('arrow.png') no-repeat;
@@ -35,19 +36,18 @@
             background: url('../../images/eiffel-tower-2000717_1920.jpg') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
-            
         }
+
         h4 {
             width: 276px;
             height: 45px;
-            text-align:center;
-            background-color:aquamarine;
+            text-align: center;
+            background-color: aquamarine;
             font-size: 1em;
             font-weight: bold;
             font-family: Verdana, Arial, Helvetica, sans-serif;
             border: 1px solid black;
         }
-
     </style>
 </head>
 <body>
@@ -62,7 +62,7 @@
                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 
                     <h4><font color="#633974"> S'il vous plaît entrez votre texte</font></h4>
-                    
+
                     @Html.LabelFor(m => m.Text, new { @class = "control-label" })<br />
                     @Html.TextAreaFor(m => m.Text, 18, 40, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-lg-3">
                         <button type="button" value="d'accueil" class="btn-lg" onclick="location.href='@Url.Action("Index")'">d'accueil</button>
-                        
+
                     </div>
                     <div id="play">
                         <audio controls>
@@ -88,7 +88,7 @@
                         <div class="search_categories">
                             <div class="select">
                                 <select name="Lang" id="search_categories">
-                                    
+
                                     <option>Francais</option>
                                     <option>Anglais</option>
                                     <option>Allemand</option>
@@ -96,14 +96,14 @@
                                 </select>
                             </div>
                         </div>
-                    <br />
-                    <div class="col-lg-2">
-                        <input type="submit" value="Enter" class="btn-lg">
+                        <br />
+                        <div class="col-lg-2">
+                            <input type="submit" value="Entrer" class="btn-lg">
+                        </div>
                     </div>
                 </div>
-             </div>
-          </div>
             </div>
+        </div>
     }
 </body>
 </html>

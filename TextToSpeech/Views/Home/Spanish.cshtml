@@ -33,17 +33,19 @@
                     z-index: 10;
                     font-size: 1em;
                 }
+
         body {
             background: url('../../images/Untitled-design-2-4-796x417.png') no-repeat center center fixed;
             background-size: cover;
             background-size: cover;
         }
+
         h4 {
             width: 276px;
             height: 45px;
             text-align: center;
-            background-color:antiquewhite;
-            color:brown;
+            background-color: antiquewhite;
+            color: brown;
             font-size: 1em;
             font-weight: bold;
             font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -74,27 +76,29 @@
 
                     <br />
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <input type="submit" value="Registar" class="btn-lg">
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <button type="button" value="Salvar" class="btn-lg" onclick="location.href='@Url.Action("Add", "Audios")'">Salvar</button>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         <button type="button" value="página principal" class="btn-lg" onclick="location.href='@Url.Action("Index")'">Página Principal</button>
                     </div>
                     <div id="play">
-                       <audio controls>
-                          <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
+                        <audio controls>
+                            <source id="play" src="@Url.Action("myaudio")" type="audio/mp3" />
                         </audio>
                     </div>
+                    <br />
+
                     <h4>Traducir al (Frances, Aleman, Ingles)</h4>
 
                     <div>
                         <div class="search_categories">
                             <div class="select">
                                 <select name="Lang" id="search_categories">
-                                   
+
                                     <option>Espanol</option>
                                     <option>Ingles</option>
                                     <option>Frances</option>
@@ -102,13 +106,14 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="submit" value="Enter" class="btn-lg">
-
+                        <br />
+                        <div class="col-lg-12">
+                            <input type="submit" value="Registar" class="btn-lg">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            
     }
 </body>
 </html>
