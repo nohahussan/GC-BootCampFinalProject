@@ -109,8 +109,8 @@ namespace TextToSpeech.Controllers
             {
                 DAL.GetData(obj.Text, Languages.French_France);
             }
-            Session["a"] = obj;
-            Session["Language"] = Lang;
+            Session["a"] = obj; 
+             Session["Language"] = Lang;
             if (Lang == null|| Lang == "Francais")
             {
                 obj.Language = "French";//this to store the language field to the data base 
@@ -133,29 +133,31 @@ namespace TextToSpeech.Controllers
             Post var = (Post)Session["a"];
             string lang = (string)Session["Language"];
 
+           
             switch (lang)
             {
-                case "ingles":
-                case "anglais":
-                case "englisch":
+                
+                case "Ingles":
+                case "Anglais":
+                case "Englisch":
                     TranslatePost enObj = TranslateDAL.GetPost(var.Text, "en");
                     DAL.GetData(enObj.TranslatedText, Languages.English_UnitedStates);
                     return View(enObj);
                 case "Spanish":
-                case "espagnol":
-                case "spanisch":  
+                case "Espagnol":
+                case "Spanisch":  
                     TranslatePost spObj = TranslateDAL.GetPost(var.Text, "es");
                     DAL.GetData(spObj.TranslatedText, Languages.Spanish_Mexico);
-                    return View(spObj);
+                    return View(spObj);        
                 case "French":
-                case "frances":
-                case "franzosisch":
+                case "Frances":
+                case "Franzosisch":
                     TranslatePost frObj = TranslateDAL.GetPost(var.Text, "fr");
                     DAL.GetData(frObj.TranslatedText, Languages.French_France);
                     return View(frObj);
                 case "German":
-                case "aleman":
-                case "allemand":
+                case "Aleman":
+                case "Allemand":
                     TranslatePost grObj = TranslateDAL.GetPost(var.Text, "de");
                     DAL.GetData(grObj.TranslatedText, Languages.German);
                     return View(grObj);
